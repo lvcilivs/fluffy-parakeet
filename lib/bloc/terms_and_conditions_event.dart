@@ -8,7 +8,7 @@ abstract class TermsAndConditionsEvent extends Equatable {
 }
 
 class SelectLanguage extends TermsAndConditionsEvent {
-  SelectLanguage({
+  const SelectLanguage({
     required this.selectedLanguage,
   });
   final String selectedLanguage;
