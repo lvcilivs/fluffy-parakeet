@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sneezing_cheetah/bloc/pdf_loader_bloc.dart';
 import 'package:sneezing_cheetah/bloc/terms_and_conditions_bloc.dart';
 import 'package:sneezing_cheetah/colors.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
@@ -38,6 +37,14 @@ class _EkycPageState extends State<EkycPage> {
       appBar: AppBar(
         backgroundColor: scaffoldColor,
         elevation: 0,
+        leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
       ),
       body: Container(),
     );
