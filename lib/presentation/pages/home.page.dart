@@ -4,6 +4,7 @@ import 'package:sneezing_cheetah/colors.dart';
 import 'package:sneezing_cheetah/config.dart';
 import 'package:sneezing_cheetah/presentation/widgets/dotted_vertical_line.widget.dart';
 import 'package:sneezing_cheetah/presentation/widgets/primary_app_bar.widget.dart';
+import 'package:sneezing_cheetah/router.dart';
 import 'package:sneezing_cheetah/size_config.dart';
 
 class HomePage extends StatelessWidget {
@@ -92,39 +93,44 @@ class HomePage extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Container(
-                          margin: EdgeInsets.only(bottom: 16),
-                          decoration: BoxDecoration(
-                              gradient: oroGradient,
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.black.withOpacity(0.16),
-                                    offset: Offset(0, 4),
-                                    blurRadius: 10)
-                              ]),
-                          width: double.infinity,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.5),
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Locker Contents',
-                                    style: GoogleFonts.nunitoSans(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 14,
-                                        color: Colors.black),
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  const Icon(
-                                    Icons.chevron_right,
-                                    size: 20,
-                                  )
+                        InkWell(
+                          child: Container(
+                            margin: EdgeInsets.only(bottom: 16),
+                            decoration: BoxDecoration(
+                                gradient: oroGradient,
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.black.withOpacity(0.16),
+                                      offset: Offset(0, 4),
+                                      blurRadius: 10)
                                 ]),
+                            width: double.infinity,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.5),
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Locker Contents',
+                                      style: GoogleFonts.nunitoSans(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 14,
+                                          color: Colors.black),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    const Icon(
+                                      Icons.chevron_right,
+                                      size: 20,
+                                    )
+                                  ]),
+                            ),
                           ),
+                          onTap: () {
+                            Navigator.pushNamed(context, lockerContentsPage);
+                          },
                         ),
                       ],
                     ),
