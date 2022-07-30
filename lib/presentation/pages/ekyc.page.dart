@@ -19,11 +19,14 @@ class _EkycPageState extends State<EkycPage> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       return showDialog(
           context: context,
-          builder: (context) => const SimpleDialog(
-                // TODO(roy): Make this responsive
-                insetPadding: EdgeInsets.all(12),
-                contentPadding: EdgeInsets.all(0),
-                children: [PopUpTermsAndConditions()],
+          builder: (context) => BlocProvider(
+                create: (context) => TermsAndConditionsBloc(),
+                child: const SimpleDialog(
+                  // TODO(roy): Make this responsive
+                  insetPadding: EdgeInsets.all(12),
+                  contentPadding: EdgeInsets.all(0),
+                  children: [PopUpTermsAndConditions()],
+                ),
               ));
     });
   }
