@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
     final SizeConfig size = SizeConfig(context);
     return Scaffold(
       backgroundColor: scaffoldColor,
-      appBar: PrimaryAppBar(),
+      appBar: PrimaryAppBar(context),
       body: SafeArea(
           child: ListView(
         children: [

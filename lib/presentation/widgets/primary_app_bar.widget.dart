@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sneezing_cheetah/colors.dart';
 import 'package:sneezing_cheetah/config.dart';
+import 'package:sneezing_cheetah/router.dart';
 
-AppBar PrimaryAppBar() => AppBar(
+AppBar PrimaryAppBar(BuildContext context) => AppBar(
       backgroundColor: scaffoldColor,
       elevation: 0,
       title: Container(
@@ -24,25 +25,30 @@ AppBar PrimaryAppBar() => AppBar(
       actions: [
         Padding(
           padding: const EdgeInsets.only(top: 21.0, bottom: 16.0, right: 28.0),
-          child: Row(
-            children: [
-              const Icon(
-                Icons.location_on,
-                color: oroYellow,
-                size: 14,
-              ),
-              const SizedBox(
-                width: 3,
-              ),
-              Text(
-                'Ekyc',
-                style: GoogleFonts.nunitoSans(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w800,
-                  fontSize: 14,
+          child: InkWell(
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.location_on,
+                  color: oroYellow,
+                  size: 14,
                 ),
-              )
-            ],
+                const SizedBox(
+                  width: 3,
+                ),
+                Text(
+                  'Ekyc',
+                  style: GoogleFonts.nunitoSans(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 14,
+                  ),
+                )
+              ],
+            ),
+            onTap: () {
+              Navigator.pushNamed(context, ekycPage);
+            },
           ),
         )
       ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sneezing_cheetah/colors.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
@@ -7,14 +8,34 @@ class EkycPage extends StatefulWidget {
 
   @override
   State<EkycPage> createState() => _EkycPageState();
-
-  @override
-  Future<void> initState() async {
-    //PDFDocument doc = await PDFDocument.fromAsset('assets/test.pdf');
-  }
 }
 
 class _EkycPageState extends State<EkycPage> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      return showDialog(
+          context: context,
+          builder: (context) => SimpleDialog(
+                children: [
+                  Column(
+                    children: [
+                      Row(
+                        children: [
+                          const Text('e-Kyc Confirmation'),
+                          Container(
+                            child: Row(children: [const Text('English')]),
+                          )
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              ));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,56 +43,170 @@ class _EkycPageState extends State<EkycPage> {
         backgroundColor: scaffoldColor,
         elevation: 0,
       ),
-      body: Column(children: [
-        Row(
-          children: [
-            Text('e-Kyc Confirmation'),
-            PopupMenuButton(
-                child: Container(
-                  child: Row(children: [
-                    Text('English'),
-                    Icon(
-                      Icons.translate,
-                    ),
-                  ]),
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'e-Kyc Confirmation',
+                style: GoogleFonts.nunitoSans(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16,
+                  color: Colors.black,
                 ),
-                itemBuilder: (context) => [
-                      PopupMenuItem(
-                        child: Text('English'),
+                textScaleFactor: 1,
+              ),
+              PopupMenuButton(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 2.5, horizontal: 15),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: const Color(0xffffe1a8)),
+                    child: Row(children: [
+                      Text(
+                        'English',
+                        style: GoogleFonts.nunitoSans(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 10,
+                          color: Colors.black,
+                        ),
+                        textScaleFactor: 1,
                       ),
-                    ])
-          ],
-        ),
-        Text('Terms and condition thing.'),
-        Divider(),
-        Container(
-          height: 500,
-          child: SfPdfViewer.network(
-            'https://www.fleetster.net/legal/standard-terms-and-conditions.pdf',
-            canShowScrollHead: true,
-            canShowScrollStatus: true,
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      const Icon(
+                        Icons.translate,
+                        size: 15,
+                      ),
+                    ]),
+                  ),
+                  itemBuilder: (context) => [
+                        const PopupMenuItem(
+                          child: PopUpMenuLanguage(
+                            language: 'English',
+                          ),
+                        ),
+                        const PopupMenuItem(
+                          child: PopUpMenuLanguage(
+                            language: 'Tamil',
+                          ),
+                        ),
+                        const PopupMenuItem(
+                          child: PopUpMenuLanguage(
+                            language: 'Telegu',
+                          ),
+                        ),
+                        const PopupMenuItem(
+                          child: PopUpMenuLanguage(
+                            language: 'Kannada',
+                          ),
+                        ),
+                        const PopupMenuItem(
+                          child: PopUpMenuLanguage(
+                            language: 'Marathi',
+                            divider: false,
+                          ),
+                        ),
+                      ]),
+            ],
           ),
-        ),
-        Row(children: [
-          Flexible(
-            flex: 1,
-            fit: FlexFit.tight,
-            child: Container(
-              child: Text('Close'),
+          const SizedBox(
+            height: 8,
+          ),
+          Text(
+            'Please read the document carefully before proceeding further.',
+            style: GoogleFonts.nunitoSans(
+              fontWeight: FontWeight.w600,
+              fontSize: 12,
+              color: const Color(0xff919191),
+            ),
+            textScaleFactor: 1,
+            textAlign: TextAlign.start,
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          const Divider(),
+          const SizedBox(
+            height: 12,
+          ),
+          Container(
+            height: 350,
+            child: SfPdfViewer.network(
+              'https://www.fleetster.net/legal/standard-terms-and-conditions.pdf',
+              canShowScrollHead: true,
+              canShowScrollStatus: true,
             ),
           ),
           SizedBox(
-            width: 8,
+            height: 21,
           ),
-          Flexible(
-            flex: 4,
-            fit: FlexFit.tight,
-            child: Container(
-              child: Text('Confirm to proceed further'),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+            Flexible(
+              flex: 2,
+              fit: FlexFit.tight,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Color(0xffcecece))),
+                child: Text(
+                  'Close',
+                  style: GoogleFonts.nunitoSans(
+                      fontWeight: FontWeight.w700, fontSize: 14),
+                  textAlign: TextAlign.center,
+                  textScaleFactor: 1,
+                ),
+              ),
             ),
-          )
+            const SizedBox(
+              width: 8,
+            ),
+            Expanded(
+              flex: 5,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                decoration: BoxDecoration(
+                    color: Color(0xffffc351),
+                    borderRadius: BorderRadius.circular(20)),
+                child: Text(
+                  'Confirm to proceed further',
+                  style: GoogleFonts.nunitoSans(
+                      fontWeight: FontWeight.w700, fontSize: 14),
+                  textScaleFactor: 1,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            )
+          ]),
         ]),
-      ]),
+      ),
+    );
+  }
+}
+
+class PopUpMenuLanguage extends StatelessWidget {
+  const PopUpMenuLanguage({
+    Key? key,
+    required this.language,
+    this.divider = true,
+  }) : super(key: key);
+  final String language;
+  final bool divider;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(language,
+            style: GoogleFonts.nunitoSans(
+                fontWeight: FontWeight.w600, fontSize: 12)),
+        if (divider) const Divider(),
+      ],
     );
   }
 }
