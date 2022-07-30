@@ -17,34 +17,30 @@ class _EkycPageState extends State<EkycPage> {
   @override
   void initState() {
     super.initState();
-    // WidgetsBinding.instance.addPostFrameCallback((_) async {
-    //   return showDialog(
-    //       context: context,
-    //       builder: (context) => BlocProvider(
-    //             create: (context) => TermsAndConditionsBloc(),
-    //             child: const SimpleDialog(
-    //               // TODO(roy): Make this responsive
-    //               insetPadding: EdgeInsets.all(12),
-    //               contentPadding: EdgeInsets.all(0),
-    //               children: [PopUpTermsAndConditions()],
-    //             ),
-    //           ));
-    // });
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      return showDialog(
+          context: context,
+          builder: (context) => BlocProvider(
+                create: (context) => TermsAndConditionsBloc(),
+                child: const SimpleDialog(
+                  // TODO(roy): Make this responsive
+                  insetPadding: EdgeInsets.all(12),
+                  contentPadding: EdgeInsets.all(0),
+                  children: [PopUpTermsAndConditions()],
+                ),
+              ));
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: scaffoldColor,
-          elevation: 0,
-        ),
-        body: BlocProvider<TermsAndConditionsBloc>(
-          create: (BuildContext context) {
-            return TermsAndConditionsBloc();
-          },
-          child: const PopUpTermsAndConditions(),
-        ));
+      appBar: AppBar(
+        backgroundColor: scaffoldColor,
+        elevation: 0,
+      ),
+      body: Container(),
+    );
   }
 }
 
