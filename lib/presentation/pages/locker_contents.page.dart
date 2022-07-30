@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sneezing_cheetah/colors.dart';
+import 'package:sneezing_cheetah/router.dart';
 
 class LockerContentsPage extends StatelessWidget {
   const LockerContentsPage({Key? key}) : super(key: key);
@@ -69,7 +70,9 @@ class LockerContentsPage extends StatelessWidget {
             ),
           ),
         ),
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, paymentPage);
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

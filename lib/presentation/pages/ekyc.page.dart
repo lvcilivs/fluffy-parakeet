@@ -38,7 +38,7 @@ class _EkycPageState extends State<EkycPage> {
         backgroundColor: scaffoldColor,
         elevation: 0,
         leading: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: Colors.black,
             ),
@@ -111,9 +111,9 @@ class PopUpTermsAndConditions extends StatelessWidget {
                       PopupMenuItem(
                         value: 'English',
                         onTap: () {
-                          context
-                              .read<TermsAndConditionsBloc>()
-                              .add(SelectLanguage(selectedLanguage: 'English'));
+                          context.read<TermsAndConditionsBloc>().add(
+                              const SelectLanguage(
+                                  selectedLanguage: 'English'));
                         },
                         child: const PopUpMenuLanguage(
                           language: 'English',
@@ -122,9 +122,8 @@ class PopUpTermsAndConditions extends StatelessWidget {
                       PopupMenuItem(
                         value: 'Tamil',
                         onTap: () {
-                          context
-                              .read<TermsAndConditionsBloc>()
-                              .add(SelectLanguage(selectedLanguage: 'Tamil'));
+                          context.read<TermsAndConditionsBloc>().add(
+                              const SelectLanguage(selectedLanguage: 'Tamil'));
                         },
                         child: const PopUpMenuLanguage(
                           language: 'Tamil',
@@ -133,9 +132,8 @@ class PopUpTermsAndConditions extends StatelessWidget {
                       PopupMenuItem(
                         value: 'Telegu',
                         onTap: () {
-                          context
-                              .read<TermsAndConditionsBloc>()
-                              .add(SelectLanguage(selectedLanguage: 'Telegu'));
+                          context.read<TermsAndConditionsBloc>().add(
+                              const SelectLanguage(selectedLanguage: 'Telegu'));
                         },
                         child: const PopUpMenuLanguage(
                           language: 'Telegu',
@@ -144,9 +142,9 @@ class PopUpTermsAndConditions extends StatelessWidget {
                       PopupMenuItem(
                         value: 'Kannada',
                         onTap: () {
-                          context
-                              .read<TermsAndConditionsBloc>()
-                              .add(SelectLanguage(selectedLanguage: 'Kannada'));
+                          context.read<TermsAndConditionsBloc>().add(
+                              const SelectLanguage(
+                                  selectedLanguage: 'Kannada'));
                         },
                         child: const PopUpMenuLanguage(
                           language: 'Kannada',
@@ -155,9 +153,9 @@ class PopUpTermsAndConditions extends StatelessWidget {
                       PopupMenuItem(
                         value: 'Marathi',
                         onTap: () {
-                          context
-                              .read<TermsAndConditionsBloc>()
-                              .add(SelectLanguage(selectedLanguage: 'Marathi'));
+                          context.read<TermsAndConditionsBloc>().add(
+                              const SelectLanguage(
+                                  selectedLanguage: 'Marathi'));
                         },
                         child: const PopUpMenuLanguage(
                           language: 'Marathi',
