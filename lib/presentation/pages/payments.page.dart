@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sneezing_cheetah/colors.dart';
 
 enum PaymentSchemes { A, B, C, D }
 
@@ -50,52 +51,91 @@ class PaymentsPage extends StatelessWidget {
               PaymentSchemeCards(),
               PaymentSchemeCards(),
               PaymentSchemeCards(),
-              Container(
-                child: Row(children: [
-                  Icon(Icons.done),
-                  Column(
-                    children: [
-                      Text('No security deposit'),
-                      Text(
-                          'Oro Safe does not charge security deposit for your lockers.')
-                    ],
-                  )
-                ]),
+              SizedBox(
+                height: 26,
               ),
-              Text('Tax payable (18%): 260'),
-              //Spacer(),
               Container(
-                child: Row(children: [
-                  Column(
-                    children: [
-                      Row(
-                        children: [
-                          Column(
-                            children: [
-                              Text('Duration'),
-                              Text('6 Months'),
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Text('Amount (incl. tax'),
-                              Text('1704'),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Checkbox(value: true, onChanged: (_) {}),
-                          Text('I agree to terms & conditions')
-                        ],
-                      ),
-                      Container(
-                        child: Text('Confirm Plan Selection'),
-                      )
-                    ],
-                  ),
-                ]),
+                decoration: BoxDecoration(gradient: oroGradient),
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Icon(Icons.done),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'No security deposit'.toUpperCase(),
+                              style: GoogleFonts.nunitoSans(
+                                fontWeight: FontWeight.w800,
+                                fontSize: 10,
+                                color: Colors.black,
+                              ),
+                              textScaleFactor: 1,
+                            ),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            Text(
+                              'Oro Safe does not charge security deposit for your lockers.',
+                              style: GoogleFonts.nunitoSans(
+                                  fontWeight: FontWeight.w400, fontSize: 10),
+                              textScaleFactor: 1,
+                            )
+                          ],
+                        )
+                      ]),
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Text(
+                'Tax payable (18%): $indianRupeeUnicode 260',
+                style: GoogleFonts.nunitoSans(
+                    fontWeight: FontWeight.w600, fontSize: 16),
+                textScaleFactor: 1,
+              ),
+              //Spacer(),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Container(
+                  child: Row(children: [
+                    Column(
+                      children: [
+                        Row(
+                          children: [
+                            Column(
+                              children: [
+                                Text('Duration'),
+                                Text('6 Months'),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Text('Amount (incl. tax'),
+                                Text('1704'),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Checkbox(value: true, onChanged: (_) {}),
+                            Text('I agree to terms & conditions')
+                          ],
+                        ),
+                        Container(
+                          child: Text('Confirm Plan Selection'),
+                        )
+                      ],
+                    ),
+                  ]),
+                ),
               )
             ]),
           ),
